@@ -1,9 +1,7 @@
-# SAML-test-SP
+# SAML-test-SP is a non-docker Saml testing plaform. 
 
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/beryju/saml-test-sp?style=flat-square)
-![Docker pulls](https://img.shields.io/docker/pulls/beryju/saml-test-sp.svg?style=flat-square)
 
-This is a small, golang-based SAML Service Provider, to be used in End-to-end or other testing. It uses the https://github.com/crewjam/saml Library for the actual SAML Logic.
+This is a small, golang-based SAML Service Provider, to be used in End-to-end or other testing. It uses the https://github.com/crewjam/saml Library for the actual SAML Logic for the main logic.  
 
 SAML-test-SP supports IdP-initiated Login flows, *however* RelayState has to be empty for this to work.
 
@@ -35,33 +33,4 @@ Note: If you're manually setting `SP_ROOT_URL`, ensure that you prefix that URL 
 
 ## Running
 
-This service is intended to run in a docker container
 
-```
-docker pull beryju/saml-test-sp
-docke run -d --rm \
-    -p 9009:9009 \
-    -e SP_ENTITY_ID=saml-test-sp \
-    -e SP_SSO_URL=http://id.beryju.org/... \
-    beryju/saml-test-sp
-```
-
-Or if you want to use docker-compose, use this in your `docker-compose.yaml`.
-
-```yaml
-version: '3.5'
-
-services:
-  saml-test-sp:
-    image: beryju/saml-test-sp
-    ports:
-      - 9009:9009
-    environment:
-      SP_METADATA_URL: http://some.site.tld/saml/metadata
-    # If you don't want SSL, cut here
-      SP_SSL_CERT: /fullchain.pem
-      SP_SSL_KEY: /privkey.pem
-    volumes:
-      - ./fullchain.pem:/fullchain.pem
-      - ./privkey.pem:/privkey.pem
-```
