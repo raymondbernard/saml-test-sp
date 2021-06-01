@@ -15,9 +15,10 @@ Note the original version of this fork lacks underlying unit tests.  As a result
 
 Beware, according to the original repo, this tool supports IdP-initiated login workflows;* however* RelayState has to be empty for this to work!!  
 
-As a result, work needs could be done to add greater flexibility. This should be an active area of the investigation if we encounter use cases for this behavior.
-
+As a result, work needs could be done to add greater flexibility. This should be an active area of the investigation when the need arises. 
 Currently, the original version and this repo have feature symmetry.  We anticipate we will maintain backward compatibility but will be free to add new features as the marketplace demand. 
+
+
 
 
 This tool is full configured using environment variables.
