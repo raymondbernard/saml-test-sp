@@ -1,9 +1,24 @@
 # SAML-test-SP is a non-docker Saml testing plaform. 
 
 
-This is a small, golang-based SAML Service Provider, to be used in End-to-end or other testing. It uses the https://github.com/crewjam/saml Library for the actual SAML Logic for the main logic.  
 
-SAML-test-SP supports IdP-initiated Login flows, *however* RelayState has to be empty for this to work.
+The mission of this repo is to create a small, golang-based SAML Service Provider or  SP.   This tool hopes to address End-to-end use cases or other testing scenarios.
+
+Note: This is initially a fork from https://github.com/BeryJu/saml-test-sp
+The repo depends on the code from https://github.com/crewjam/saml 
+
+Refactoring goals.
+Our version is refactored the same behavior into clear golang code.
+One of its best attributes of Golang is how readable and powerful it is.   As a result, the effort behind this repo is to make things easier to evaluate, extend and support the long-term feature set of this application.  
+
+Note the original version of this fork lacks underlying unit tests.  As a result, we will be writing them as we begin to evaluate the underlying code.   Our primary focus is to harden this repo by completing this effort.
+
+Beware, according to the original repo, this tool supports IdP-initiated login workflows;* however* RelayState has to be empty for this to work!!  
+
+As a result, work needs could be done to add greater flexibility. This should be an active area of the investigation if we encounter use cases for this behavior.
+
+Currently, the original version and this repo have feature symmetry.  We anticipate we will maintain backward compatibility but will be free to add new features as the marketplace demand. 
+
 
 This tool is full configured using environment variables.
 
@@ -13,7 +28,9 @@ This tool is full configured using environment variables.
 - `http://localhost:9009/saml/acs`: SAML ACS URL, needed to configure your IdP.
 - `http://localhost:9009/saml/metadata`: SAML Metadata URL, needed to configure your IdP.
 - `http://localhost:9009/`: Test URL, redirects to SAML SSO URL.
+ 
 
+ 
 ## Configuration
 
 - `SP_BIND`: Which address and port to bind to. Defaults to `0.0.0.0:9009`.
@@ -32,5 +49,6 @@ Optionally, if you want to use SSL, set these variables
 Note: If you're manually setting `SP_ROOT_URL`, ensure that you prefix that URL with https.
 
 ## Running
+go run main.go
 
 
